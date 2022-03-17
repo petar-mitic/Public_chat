@@ -27,7 +27,7 @@ public class Client {
             printWriter.println(username);
 
             Scanner scanner = new Scanner(System.in);
-            while(true){
+            while(socket.isConnected()){
                 String message = scanner.nextLine();
                 DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
                 LocalDateTime now = LocalDateTime.now();
@@ -43,7 +43,7 @@ public class Client {
             @Override
             public void run() {
                 String messageFromChat;
-                while(true){
+                while(socket.isConnected()){
                     try{
                         messageFromChat = bufferedReader.readLine();
                         System.out.println(messageFromChat);

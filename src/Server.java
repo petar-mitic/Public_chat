@@ -12,7 +12,7 @@ public class Server {
 
     public void startServer() {
         try {
-            while (true) {
+            while (!serverSocket.isClosed()) {
                 System.out.println("Server ocekuje konekcije");
                 Socket socket = serverSocket.accept();
                 System.out.println("Server primio konekciju");

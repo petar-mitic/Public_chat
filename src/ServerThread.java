@@ -62,7 +62,12 @@ public class ServerThread implements Runnable{
                 for(String s: split){
                     for(String s1: bannedWords){
                         if(s.equalsIgnoreCase(s1)){
-                            s = '*'+s.substring(1,s.length()-1)+'*';
+                            //s = '*'+s.substring(1,s.length()-1)+'*';
+                            String str = "";
+                            for (int i = 0; i < s.length()-2; i++) {
+                                str += "*";
+                            }
+                            s = s.substring(0,1) + str + s.substring(s.length()-1, s.length());
                         }else{
 
                         }
@@ -92,6 +97,7 @@ public class ServerThread implements Runnable{
     }
     public void removeClient(){
         serverThreads.remove(this);
+        usernames.remove(clientUsername);
         sendMessageToAllUsers(clientUsername + " has disconnected");
     }
 
